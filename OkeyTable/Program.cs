@@ -36,14 +36,18 @@ internal class Program
         Table CreateNewTable()
         {
             Table table = new Table();
+            try
+            {
+                Console.Write("Lütfen bahis miktarını girin (200-5000 arasında bir tam sayı): ");
+                int bahis = int.Parse(s: Console.ReadLine());
+                table.Bahis = bahis;
 
-            Console.Write("Lütfen bahis miktarını girin (200-5000 arasında bir tam sayı): ");
-            int bahis = int.Parse(Console.ReadLine());
-            table.Bahis = bahis;
-
-            Console.Write("Lütfen masa tipini girin\n(Hızlı için 1, Teketek için 2, Hızlı ve Teketek için 3, Rövanş için 4, Hızlı ve Rövanş için 5, Teketek ve Rövanş için 6, Hızlı Teketek ve Rövanş için 7): ");
-            int masaTipi = int.Parse(Console.ReadLine());
-            table.MasaTipi = (TableType)masaTipi;
+                Console.Write("Lütfen masa tipini girin\n(Hızlı için 1, Teketek için 2, Hızlı ve Teketek için 3, Rövanş için 4, Hızlı ve Rövanş için 5, Teketek ve Rövanş için 6, Hızlı Teketek ve Rövanş için 7): ");
+                int masaTipi = int.Parse(s: Console.ReadLine());
+                table.MasaTipi = (TableType)masaTipi;
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); Console.Read(); }
+            
 
             return table;
         }
